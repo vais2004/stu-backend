@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -44,7 +44,7 @@ app.put("/students/:id", async (req, res) => {
     const updatedStudent = await Student.findByIdAndUpdate(
       studentId,
       updatedStudentData,
-      { new: true },
+      { new: true }
     );
 
     if (!updatedStudent) {
@@ -68,12 +68,10 @@ app.delete("/students/:id", async (req, res) => {
       return res.status(404).json({ error: "Student not found" });
     }
 
-    res
-      .status(200)
-      .json({
-        message: "Student deleted successfully",
-        student: deletedStudent,
-      });
+    res.status(200).json({
+      message: "Student deleted successfully",
+      student: deletedStudent,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
